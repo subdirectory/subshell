@@ -1,0 +1,8 @@
+{
+  "name": "subshell",
+  "description": "Substrate Shell",
+  "repository": "https://github.com/btwiuse/subshell",
+  "logo": "https://github.com/btwiuse/subshell/raw/master/.github/logo.svg",
+  "keywords": ["substrate", "polkadot", "subshell"],
+  "stack": "container"
+}

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# not in docker
+if ! [[ -f /.dockerenv ]]; then
+  cd $(dirname $(realpath $0))
+fi
+
+deno(){
+  subshell "$@"
+# /bin/deno "$@"
+}
+
+if [[ "$1" == cache ]]; then
+  until
+    deno run --unstable cache.ts --compat --cache-only
+  do
+    sleep 1
+  done
+  deno run --unstable cache.ts --compat
+else
+  deno repl --unstable --eval-file=init.ts --compat
+fi
