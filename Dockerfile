@@ -7,7 +7,11 @@ FROM btwiuse/subshell:bin AS subshell-bin
 
 FROM node
 
+ENV RUNNING_IN_DOCKER=1
+
 RUN apt update
+
+RUN apt install -y jq vim bash tmux htop neofetch figlet sudo
 
 COPY --from=k0s /usr/bin/k0s /bin/hub
 COPY --from=deno /usr/bin/deno /bin
@@ -19,8 +23,6 @@ RUN chmod a+rx /bin/subshell
 RUN ln -sf /bin/hub /bin/agent
 
 # RUN apk add nodejs-current npm yarn jq vim bash tmux htop neofetch
-
-RUN apt install -y jq vim bash tmux htop neofetch figlet sudo
 
 ADD subsh-deno /bin/
 
