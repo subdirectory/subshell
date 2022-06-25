@@ -1,12 +1,10 @@
-//import { ApiPromise, WsProvider } from "@polkadot/api";
 import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.0-9/api/mod.ts';
-import { Client } from "./client.ts";
+import { Client, VerboseSigner } from "./mod.ts";
 
 const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
 const PROVIDER = Deno.env.get("PROVIDER") ?? "wss://rpc.polkadot.io";
 const TYPES = JSON.parse(Deno.env.get("TYPES") ?? "{}");
 const HUB = Deno.env.get("HUB") ?? `ws://localhost:8000`;
-// const HUB = Deno.env.get("HUB") ?? `wss://subshell.herokuapp.com`;
 
 export const subshellBanner = `
  ____        _         _          _ _ 
@@ -65,8 +63,6 @@ function progInfo() {
       console.log(`%c${prop} %c${value}`, "color: blue", "color: green");
     });
 }
-
-// console.log("%cHello %cWorld", "color: red", "color: blue")
 
 showAsciiBanner();
 

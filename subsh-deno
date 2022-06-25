@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # not in docker
-if [[ -z "RUNNING_IN_DOCKER" ]]; then
+if [[ -z "$RUNNING_IN_DOCKER" ]]; then
   cd $(dirname $(realpath $0))
 fi
 

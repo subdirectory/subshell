@@ -26,9 +26,7 @@ RUN ln -sf /bin/hub /bin/agent
 
 ADD subsh-deno /bin/
 
-COPY cache.ts .
-COPY init.ts .
-COPY client.ts .
+COPY *.ts .
 
 ENV DENO_DIR=/cache
 
