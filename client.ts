@@ -1,28 +1,12 @@
-#!/usr/bin/env -S deno run -A --import-map=https://subqns.github.io/subshell/import_map.json
-
-// ws://127.0.0.1:8000
-
-// import { ApiPromise, WsProvider } from "@polkadot/api";
 import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.0-9/api/mod.ts';
-
-// import type { Signer, SignerResult } from "@polkadot/api/types";
 import type { Signer, SignerResult } from 'https://deno.land/x/polkadot@0.0.0-9/api/types';
-/*
-import type {
-  Registry,
-  SignerPayloadJSON,
-  SignerPayloadRaw,
-} from "@polkadot/types/types";
-*/
 import type {
   Registry,
   SignerPayloadJSON,
   SignerPayloadRaw,
 } from 'https://deno.land/x/polkadot@0.0.0-9/types/types';
 
-// websocat --binary  'wss://btwiuse-k0s-44wpv764f6qr-8000.githubpreview.dev/api/agent/abcd/jsonl'
-
-export class Client {
+export class Client implements Signer {
   private encoder = new TextEncoder();
   private decoder = new TextDecoder();
   private base: string;
@@ -88,7 +72,7 @@ export class Client {
       ws.send(this.encoder.encode(line));
     });
   }
-  async signRaw({ address, data }) {
+  async signRaw({ address, data }: SignerPayloadRaw): Promise<SignerResult> {
     let ws = await this.dial();
     const result = await new Promise((resolve, reject) => {
       ws.onmessage = (e) => {
@@ -107,7 +91,7 @@ export class Client {
     // console.log(result)
     return result;
   }
-  async signPayload(payload) {
+  async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     let ws = await this.dial();
     const result = await new Promise((resolve, reject) => {
       ws.onmessage = (e) => {
@@ -127,30 +111,3 @@ export class Client {
     return result;
   }
 }
-
-/*
-const BASE = `wss://btwiuse-k0s-44wpv764f6qr-8000.githubpreview.dev`;
-const ID = `abcd`; // Math.random();
-
-let client = new Client(BASE, ID);
-
-while (!client.isReady) {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 300);
-  });
-}
-
-let accounts = await client.web3Accounts();
-console.log(accounts);
-// let signature = await client.sign(accounts[0].address, "Hello");
-// console.log(signature);
-
-const provider = new WsProvider("wss://rpc.polkadot.io");
-const api = await ApiPromise.create({ provider });
-// api.setSigner({signRaw: (x)=>{console.log(x); return {signature: 'sig'}}})
-api.setSigner(client);
-for (let i of [1,2,3]) {
-  const result = await api.sign(accounts[0].address, { data: i + "Hello" + new Date() });
-  console.log(result)
-}
-*/
