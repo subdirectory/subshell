@@ -1,13 +1,63 @@
+# Subshell [>_](https://subshell.xyz)
 
-### Quick Demo
+Substrate api playground in a Deno 🦕 repl, using Polkadot.js extension wallet as remote signer ✍️. 
 
-### Rationale
+![Subshell_cover](Subshell_cover.png)
+
+Subshell at its core is a TypeScript repl with these preloaded lines:
+
+```typescript
+import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.0-9/api/mod.ts';
+
+const provider = new WsProvider(`wss://polkadot.api.onfinality.io/public-ws`);
+
+const api = await ApiPromise.create({ provider});
+```
+
+In addition, it supports connecting to your Polkadot.js wallet extension when accessed from the [web interface](https://subshell.xyz). ✨
+
+## Quick Demo
+
+![Subshell](Subshell.gif)
+
+## Give it a try
+
+Visit https://subshell.xyz, or use one of the following links to connect to a different chain:  
+[Polkadot](https://subshell.xyz/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/console)
+| [Kusama](https://subshell.xyz/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/console)
+| [Moonbeam](https://subshell.xyz/?rpc=wss%3A%2F%2Fmoonbeam.api.onfinality.io%2Fpublic-ws#/console)
+| [Acala](https://subshell.xyz/?rpc=wss%3A%2F%2Facala-polkadot.api.onfinality.io%2Fpublic-ws#/console)
+| [Litentry](https://subshell.xyz/?rpc=wss%3A%2F%2Facala-polkadot.api.onfinality.io%2Fpublic-ws#/console)
+| [Parallel](https://subshell.xyz/?rpc=wss%3A%2F%2Facala-polkadot.api.onfinality.io%2Fpublic-ws#/console)
+| [Phala](https://subshell.xyz/?rpc=wss%3A%2F%2Fapi.phala.network%2Fws#/console)
+| [Aleph Zero](https://subshell.xyz/?rpc=wss%3A%2F%2Fws.azero.dev#/console)
+| [Darwinia](https://subshell.xyz/?rpc=wss%3A%2F%2Frpc.darwinia.network#/console)
+| [ChainX](https://subshell.xyz/?rpc=wss%3A%2F%2Fmainnet.chainx.org%2Fws#/console)
+| [Edgeware](https://subshell.xyz/?rpc=wss%3A%2F%2Fedgeware.api.onfinality.io%2Fpublic-ws#/console)
+| [NFTMart](https://subshell.xyz/?rpc=wss%3A%2F%2Fmainnet.nftmart.io%2Frpc%2Fws#/console)
+| ...
+
+Read the [cheatsheet](https://github.com/btwiuse/subshell/wiki/Subshell-Cheatsheet) to get a basic idea of how to use it.
+
+Maintainers of Polkadot.js libraries have made a preview release for Deno under the https://deno.land/x/polkadot namespace. 
+
+You can import them like this in the Deno repl:
+```
+import { stringToU8a } from 'https://deno.land/x/polkadot@0.0.0-9/util/mod.ts';
+```
+
+Subshell sessions run in patched [denoland/deno](https://github.com/denoland/deno) to provide better repl experience. The frontend is based on [polkadot-js/apps](https://github.com/polkadot-js/apps). The modified code will be published soon.
+
+
+## Rationale
 
 As a long term *nix user who does distro hopping from time to time, I often see (para)chains in the DotSama ecosystem as distros of Parity/Substrate, in the same sense that Arch, Debian, Gentoo, chromeOS and Android are different flavors of GNU/Linux.
 
 (Guess which Linux distro I use the most?)
 
-Taking the analogy a step further, in Linux based systems, once you have mastered the art of shell scripting, it becomes easy to switch between distros. Likewise, if you are familiar with the Polkadot.js api, you will quickly know how to play with new chains based on Substrate when they come out.
+Taking the analogy a step further, in Linux based systems, once you have mastered the art of shell scripting, it becomes easy to switch between distros.
+
+Likewise, if you are familiar with the Polkadot.js api, you will quickly learn how to play with new chains based on Substrate when they come out.
 
 For the Linux kernel, we have a lot of shells: bash, zsh, fish, ash, dash, csh, ksh, etc. , in which we interactively type commands to perform various kinds of tasks.
 
@@ -23,22 +73,21 @@ Reasons:
 
 Subshell is trying to avoid aforementioned problems by leveraging the power of Deno, a modern runtime for JavaScript and TypeScript.
 
-### Advantages
+## Features
 
-Subshell repl runs in patched Deno to provide better repl experience. The frontend is based on Polkadot.js Apps. Here are Subshell's advantages over Node.js based shells.
+Here are Subshell's advantages over Node.js based shells.  
 
-#### Accessibility
+### Accessibility
 - Available as a web app, no installation required
-- up-to-date
+- One click away from a drop-in dev terminal
 
-#### Compatibility
+### Compatibility
+- Works out of the box with most chains in the DotSama ecosystem
+- Plays nice with existing projects, like [Substrate Playground](https://playground.substrate.dev). For example: use [`https://subshell.xyz/?rpc=wss://btwiuse.playground.substrate.dev/wss`](https://subshell.xyz/?rpc=wss://btwiuse.playground.substrate.dev/wss) to connect to my playground dev node.
+- `--compat` is turned on by default, so you can still use built-in modules from Node.js
+- Added patches to improve the repl experience. The runtime is kept inact. Any Subshell scripts are also valid Deno scripts
 
-- Works with any Substrate based chain.
-- Plays nice with existing projects, like Substrate Playground
-- `--compat` is turned on by default, so you can still use built-in modules of Node.js
-- Subshell added patches to improve the repl experience. The runtime is kept inact. Any Subshell scripts are also valid Deno scripts
-
-You can load the Subshell init script in Deno. 
+In fact, you can load the Subshell init script in Deno. 
 
 ```
 $　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell/init.ts
@@ -47,23 +96,24 @@ Deno 1.23.0
 exit using ctrl+d or close()
 > api.tx. # Here tab completion won't show up
 ```
-But it won't tab complete in some circumstances. Subshell used a custom patch to fix that
 
-#### Customizability
+But it won't tab complete in some circumstances. Subshell used a custom patch to fix that. Plus you lose the ability to connect to browser wallet extension. So the recommend way is to access Subshell from the web interface.
 
-- You can override the init script
--  Custom types can be added the same way in Polkadot.js Apps
+### Customizability
 
-#### Extensibility
+- You can override the init script (soon)
+- Custom types can be added the same way in Polkadot.js Apps
 
-- The decentralized nature of Deno's package management system allows you to import dependencies from url in the repl
+### Extensibility
 
-#### Security
-- Sign messages / transactions with Polkadot.js wallet extension, never make keys leave your wallet again!
+- The decentralized nature of Deno's package import system allows you to load dependencies from url in the repl
+
+### Security
+- Sign messages / transactions with Polkadot.js wallet extension. Never make keys leave your wallet again!
 - Filesystem / network access can be disabled when you run scripts written by untrusted parties, thanks to [sandboxing in Deno](https://medium.com/deno-the-complete-reference/sandboxing-in-deno-b3d514d88b63)
 
 
-### Architecture Overview
+## Architecture Overview
 
 At first glance, you might think that the Deno repl is running directly inside your browser. That's only an illusion. In fact, there are three parties involved in a Subshell session:
 
@@ -71,7 +121,7 @@ At first glance, you might think that the Deno repl is running directly inside y
 - 🕸️: Relay server (Golang)
 - 🌐: Frontend web app (TypeScript)
 
-#### Communication mechanism
+### Communication mechanism
 
 First, Deno is running as a remote process on a worker container, inside a Pod on Kubernetes, with a persistent bidirectional JSON-RPC connection over WebSocket to the relay server.
 
@@ -95,11 +145,11 @@ Since both ends speak JSON-RPC, the browser 🌐 can invoke methods available on
 
 You might ask, when could the browser 🌐 become a server? And how is this useful? That is the fun part.
 
-#### Remote signer bridge
+### Remote signer bridge
 
 When Subshell starts, the api object is created from the Deno repl context.
 
-##### The problem
+#### The problem
 
 You can query on-chain data using `api.consts.*.*`, `api.query.*.*` etc.
 
@@ -153,9 +203,35 @@ api.setSigner(new RemoteSignerBridge())
 
 By applying this technique, you can safely do `api.sign`, `api.tx.*.*.signAndSend` in the remote Deno 🦕 repl, and sign it with the Polkadot.js wallet extension in your browser🌐.
 
-### Prior Art
+## Prior Art
 
 - https://github.com/halva-suite/halva
 - https://github.com/cennznet/cli
 - https://github.com/compound-finance/gateway/tree/develop/chains
 - https://github.com/cryptolab-network/polkadot-api-cli
+
+## LICENSE
+
+```
+MIT License
+
+Copyright (c) 2022 btwiuse
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
