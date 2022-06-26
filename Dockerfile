@@ -39,7 +39,9 @@ RUN useradd -N subshell
 
 RUN chown -R subshell /cache
 
-RUN ln -sf /dev/null /cache/deno_history.txt
+COPY deno_history.txt /cache/
+RUN chown root:root /cache/deno_history.txt
+RUN chmod 644 /cache/deno_history.txt
 
 USER subshell
 
