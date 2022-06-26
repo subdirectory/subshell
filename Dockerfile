@@ -39,6 +39,8 @@ RUN useradd -N subshell
 
 RUN chown -R subshell /cache
 
+RUN ln -sf /dev/null /cache/deno_history.txt
+
 USER subshell
 
 ENTRYPOINT ["bash", "-c"]
