@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.1 Jun 26, 2022
+
+- release 0.0.1
+
 ## 0.0.0-9 Jun 26, 2022
 
 - refix setPolkadotVersion in ci-release.ts

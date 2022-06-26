@@ -54,33 +54,16 @@ async function getVersion(): Promise<string> {
   return vermatch[1];
 }
 
-// sets the version globally to all deno.land/x/subshell imports
-async function setVersion(version: string, dir: string): Promise<void> {
+async function setPkgVersion(regexp: RegExp, pkg: string, version: string, dir: string): Promise<void> {
   for await (const entry of Deno.readDir(dir)) {
     if (entry.isDirectory) {
-      await setVersion(version, `${dir}/${entry.name}`);
+      await setPkgVersion(regexp, pkg, version, `${dir}/${entry.name}`);
     } else if (entry.name.endsWith('.ts') || entry.name.endsWith('.md')) {
       const path = `${dir}/${entry.name}`;
       const contents = await Deno.readTextFile(path);
 
-      if (RE_PKG.test(contents)) {
-        await Deno.writeTextFile(path, contents.replace(RE_PKG, `deno.land/x/subshell@${version}/`));
-      }
-    }
-  }
-}
-
-// sets the version globally to all deno.land/x/polkadot imports
-async function setPolkadotVersion(version: string, dir: string): Promise<void> {
-  for await (const entry of Deno.readDir(dir)) {
-    if (entry.isDirectory) {
-      await setPolkadotVersion(version, `${dir}/${entry.name}`);
-    } else if (entry.name.endsWith('.ts') || entry.name.endsWith('.md')) {
-      const path = `${dir}/${entry.name}`;
-      const contents = await Deno.readTextFile(path);
-
-      if (RE_PKG_POLKADOT.test(contents)) {
-        await Deno.writeTextFile(path, contents.replace(RE_PKG_POLKADOT, `deno.land/x/polkadot@${version}/`));
+      if (regexp.test(contents)) {
+        await Deno.writeTextFile(path, contents.replace(regexp, `${pkg}@${version}/`));
       }
     }
   }
@@ -126,6 +109,8 @@ const version = await getVersion();
 
 await gitSetup();
 await createModTs();
-await setVersion(version, '.');
-await setPolkadotVersion(POLKADOT_VERSION, '.');
+// sets the version globally to all deno.land/x/subshell imports
+await setPkgVersion(RE_PKG, 'deno.land/x/subshell', version, '.');
+// sets the version globally to all deno.land/x/polkadot imports
+await setPkgVersion(RE_PKG_POLKADOT, 'deno.land/x/polkadot', POLKADOT_VERSION, '.');
 await gitPush(version);
