@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.0-7 Jun 26, 2022
+
+- set polkadot version from ci-release.ts
+
 ## 0.0.0-6 Jun 26, 2022
 
 - change subsh-deno --eval-file url

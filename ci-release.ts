@@ -19,6 +19,11 @@ type GitArgs =
 // regex for matching `deno.land/x/subshell[@<version>]/
 const RE_PKG = /deno\.land\/x\/subshell(@\d*\.\d*\.\d*(-\d*)?)?\//g;
 
+// regex for matching `deno.land/x/polkadot[@<version>]/
+const RE_PKG_POLKADOT = /deno\.land\/x\/polkadot(@\d*\.\d*\.\d*(-\d*)?)?\//g;
+
+const POLKADOT_VERSION = "0.0.1"
+
 // execute a command
 async function exec(...cmd: string[]): Promise<void> {
   const shortCmd = `'${cmd[0]} ${cmd[1]} ...'`;
@@ -65,6 +70,22 @@ async function setVersion(version: string, dir: string): Promise<void> {
   }
 }
 
+// sets the version globally to all deno.land/x/polkadot imports
+async function setPolkadotVersion(version: string, dir: string): Promise<void> {
+  for await (const entry of Deno.readDir(dir)) {
+    if (entry.isDirectory) {
+      await setVersion(version, `${dir}/${entry.name}`);
+    } else if (entry.name.endsWith('.ts') || entry.name.endsWith('.md')) {
+      const path = `${dir}/${entry.name}`;
+      const contents = await Deno.readTextFile(path);
+
+      if (RE_PKG.test(contents)) {
+        await Deno.writeTextFile(path, contents.replace(RE_PKG_POLKADOT, `deno.land/x/polkadot@${version}/`));
+      }
+    }
+  }
+}
+
 // sets up git, username, merge & latest
 async function gitSetup(): Promise<void> {
   const USER = 'github-actions[bot]';
@@ -106,4 +127,5 @@ const version = await getVersion();
 await gitSetup();
 await createModTs();
 await setVersion(version, '.');
+await setPolkadotVersion(POLKADOT_VERSION, '.');
 await gitPush(version);
