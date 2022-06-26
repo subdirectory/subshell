@@ -2,4 +2,4 @@
 
 ```
 $　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.1/init.ts
-...
+```
