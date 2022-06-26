@@ -1,6 +1,7 @@
-// Copyright 2017-2022 @polkadot/deno authors & contributors
-// SPDX-License-Identifier: Apache-2.0
+// Copyright 2017-2022 subshell authors & contributors
+// SPDX-License-Identifier: MIT
 
 // auto-generated via ci-release.ts, do not edit
 
-
+export * as client from './client/mod.ts';
+export * as signer from './signer/mod.ts';
