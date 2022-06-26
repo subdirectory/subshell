@@ -79,7 +79,7 @@ async function setPolkadotVersion(version: string, dir: string): Promise<void> {
       const path = `${dir}/${entry.name}`;
       const contents = await Deno.readTextFile(path);
 
-      if (RE_PKG.test(contents)) {
+      if (RE_PKG_POLKADOT.test(contents)) {
         await Deno.writeTextFile(path, contents.replace(RE_PKG_POLKADOT, `deno.land/x/polkadot@${version}/`));
       }
     }
