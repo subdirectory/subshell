@@ -16,8 +16,8 @@ type GitArgs =
   ['push', string, '--tags'] |
   ['tag', string];
 
-// regex for matching `deno.land/x/polkadot[@<version>]/
-const RE_PKG = /deno\.land\/x\/polkadot(@\d*\.\d*\.\d*(-\d*)?)?\//g;
+// regex for matching `deno.land/x/subshell[@<version>]/
+const RE_PKG = /deno\.land\/x\/subshell(@\d*\.\d*\.\d*(-\d*)?)?\//g;
 
 // execute a command
 async function exec(...cmd: string[]): Promise<void> {
@@ -49,7 +49,7 @@ async function getVersion(): Promise<string> {
   return vermatch[1];
 }
 
-// sets the version globally to all deno.land/x/polkadot imports
+// sets the version globally to all deno.land/x/subshell imports
 async function setVersion(version: string, dir: string): Promise<void> {
   for await (const entry of Deno.readDir(dir)) {
     if (entry.isDirectory) {
@@ -59,7 +59,7 @@ async function setVersion(version: string, dir: string): Promise<void> {
       const contents = await Deno.readTextFile(path);
 
       if (RE_PKG.test(contents)) {
-        await Deno.writeTextFile(path, contents.replace(RE_PKG, `deno.land/x/polkadot@${version}/`));
+        await Deno.writeTextFile(path, contents.replace(RE_PKG, `deno.land/x/subshell@${version}/`));
       }
     }
   }
@@ -82,7 +82,7 @@ async function gitPush(version: string): Promise<void> {
   const REPO = `https://${Deno.env.get('GH_PAT')}@github.com/${Deno.env.get('GITHUB_REPOSITORY')}.git`;
 
   await git('add', '--all', '.');
-  await git('commit', '--no-status', '--quiet', '-m', `[CI Skip] deno.land/x/polkadot@${version}`);
+  await git('commit', '--no-status', '--quiet', '-m', `[CI Skip] deno.land/x/subshell@${version}`);
   await git('push', REPO);
   await git('tag', version);
   await git('push', REPO, '--tags');
