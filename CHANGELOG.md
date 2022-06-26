@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.0-6 Jun 26, 2022
+
+- change subsh-deno --eval-file url
+
 ## 0.0.0-5 Jun 26, 2022
 
 - move libs to respective dirs
