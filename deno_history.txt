@@ -1,4 +1,4 @@
 api.isConnected // is api connected?
 await Subshell.extension.selectAccount() // select account from wallet extension
 await api.sign(await Subshell.extension.selectAccount(), {data: 'BTW I USE SUBSHELL'}) // sign data with selected account
-await api.tx.system.remark('BTW I USE SUBSHELL').signAndSend(await Subshell.extension.selectAccount()) // submit extrinsic with selected account
+await api.tx.system.remarkWithEvent('BTW I USE SUBSHELL').signAndSend(await Subshell.extension.selectAccount()) // submit extrinsic with selected account

@@ -147,7 +147,7 @@ let Subshell = {
     info(
       "(You should see a signing request if you have the wallet extension installed and enabled. Feel free to click cancel)",
     );
-    info("> await api.tx.system.remark('Hello, Subshell!').signAndSend(BOB)");
+    info("> await api.tx.system.remarkWithEvent('Hello, Subshell!').signAndSend(BOB)");
     info(`(skipped. Try it by replacing BOB with your own address)`);
     info();
     await sleep();
