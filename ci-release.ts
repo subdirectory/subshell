@@ -98,7 +98,7 @@ async function createModTs (): Promise<void> {
     }
   }
 
-  await Deno.writeTextFile('mod.ts', `// Copyright 2017-${new Date().getFullYear()} @polkadot/deno authors & contributors\n// SPDX-License-Identifier: Apache-2.0\n\n// auto-generated via ci-release.ts, do not edit\n\n${imports.sort().join('\n')}\n`);
+  await Deno.writeTextFile('mod.ts', `// Copyright 2017-${new Date().getFullYear()} subshell authors & contributors\n// SPDX-License-Identifier: MIT\n\n// auto-generated via ci-release.ts, do not edit\n\n${imports.sort().join('\n')}\n`);
 }
 
 const version = await getVersion();
