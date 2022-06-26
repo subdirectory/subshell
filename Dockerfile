@@ -16,7 +16,7 @@ RUN apt update
 RUN apt install -y jq vim bash tmux htop neofetch figlet sudo
 
 COPY --from=k0s /usr/bin/k0s /bin/hub
-COPY --from=dkg /usr/bin/dkg /bin
+COPY --from=dkg /bin/dkg /bin
 COPY --from=deno /usr/bin/deno /bin
 # COPY --from=subshell-bin --chmod=777 /subshell /bin
 COPY --from=subshell-bin /subshell /bin
