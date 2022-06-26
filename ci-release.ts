@@ -9,7 +9,7 @@ import { stringCamelCase } from 'https://deno.land/x/polkadot@0.0.0-9/util/mod.t
 // tighter specification for git arguments
 type GitArgs =
   ['add', '--all', '.'] |
-  ['checkout', 'master'] |
+  ['checkout', 'main'] |
   ['commit', '--no-status', '--quiet', '-m', string] |
   ['config', 'merge.ours.driver' | 'push.default' | `user.${'email' | 'name'}`, string] |
   ['push', string] |
@@ -74,7 +74,7 @@ async function gitSetup(): Promise<void> {
   await git('config', 'user.email', MAIL);
   await git('config', 'push.default', 'simple');
   await git('config', 'merge.ours.driver', 'true');
-  await git('checkout', 'master');
+  await git('checkout', 'main');
 }
 
 // commit and push the changes to git
