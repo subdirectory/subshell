@@ -1,10 +1,10 @@
-import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.0-9/api/mod.ts';
-import type { Signer, SignerResult } from 'https://deno.land/x/polkadot@0.0.0-9/api/types';
+import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.1/api/mod.ts';
+import type { Signer, SignerResult } from 'https://deno.land/x/polkadot@0.0.1/api/types';
 import type {
   Registry,
   SignerPayloadJSON,
   SignerPayloadRaw,
-} from 'https://deno.land/x/polkadot@0.0.0-9/types/types';
+} from 'https://deno.land/x/polkadot@0.0.1/types/types';
 
 export class Client implements Signer {
   private encoder = new TextEncoder();
