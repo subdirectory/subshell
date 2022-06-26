@@ -74,7 +74,7 @@ async function setVersion(version: string, dir: string): Promise<void> {
 async function setPolkadotVersion(version: string, dir: string): Promise<void> {
   for await (const entry of Deno.readDir(dir)) {
     if (entry.isDirectory) {
-      await setVersion(version, `${dir}/${entry.name}`);
+      await setPolkadotVersion(version, `${dir}/${entry.name}`);
     } else if (entry.name.endsWith('.ts') || entry.name.endsWith('.md')) {
       const path = `${dir}/${entry.name}`;
       const contents = await Deno.readTextFile(path);
