@@ -22,13 +22,15 @@ In addition, it supports connecting to your Polkadot.js wallet extension when ac
 
 ## Give it a try
 
-Visit https://subshell.xyz, or use one of the following links to connect to a different chain:  
+Visiting [homepage](https://subshell.xyz) will connect to Polkadot.
+
+Use one of the following links to connect to a different chain:  
 [Polkadot](https://subshell.xyz/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/console)
 | [Kusama](https://subshell.xyz/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/console)
 | [Moonbeam](https://subshell.xyz/?rpc=wss%3A%2F%2Fmoonbeam.api.onfinality.io%2Fpublic-ws#/console)
 | [Acala](https://subshell.xyz/?rpc=wss%3A%2F%2Facala-polkadot.api.onfinality.io%2Fpublic-ws#/console)
 | [Litentry](https://subshell.xyz/?rpc=wss%3A%2F%2Facala-polkadot.api.onfinality.io%2Fpublic-ws#/console)
-| [Parallel](https://subshell.xyz/?rpc=wss%3A%2F%2Facala-polkadot.api.onfinality.io%2Fpublic-ws#/console)
+| [Parallel](https://subshell.xyz/?rpc=wss%3A%2F%2Fparallel.api.onfinality.io%2Fpublic-ws#/console)
 | [Phala](https://subshell.xyz/?rpc=wss%3A%2F%2Fapi.phala.network%2Fws#/console)
 | [Aleph Zero](https://subshell.xyz/?rpc=wss%3A%2F%2Fws.azero.dev#/console)
 | [Darwinia](https://subshell.xyz/?rpc=wss%3A%2F%2Frpc.darwinia.network#/console)
@@ -49,7 +51,7 @@ import { stringToU8a } from 'https://deno.land/x/polkadot@0.0.0-9/util/mod.ts';
 Subshell sessions run in patched [denoland/deno](https://github.com/denoland/deno) to provide better repl experience. The frontend is based on [polkadot-js/apps](https://github.com/polkadot-js/apps). The modified code will be published soon.
 
 
-## Rationale
+## Motivation
 
 As a long term *nix user who does distro hopping from time to time, I often see (para)chains in the DotSama ecosystem as distros of Parity/Substrate, in the same sense that Arch, Debian, Gentoo, chromeOS and Android are different flavors of GNU/Linux.
 
@@ -79,7 +81,7 @@ Here are Subshell's advantages over Node.js based shells.
 
 ### Accessibility
 - Available as a web app, no installation required
-- One click away from a drop-in dev terminal
+- One click away from a drop-in dev terminal in browser
 
 ### Compatibility
 - Works out of the box with most chains in the DotSama ecosystem
@@ -139,7 +141,7 @@ creating an illusion that your browser is directly connected to Deno, full duple
 
 🌐⇆⇆🦕
 
-In full duplex communication, both ends can send and receive data to the other end spontaneously.
+In full duplex communication, both ends can send and receive data to the other end at the same time.
 
 Since both ends speak JSON-RPC, the browser 🌐 can invoke methods available on the Deno 🦕 side, and vice versa.
 
