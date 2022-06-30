@@ -104,7 +104,7 @@ Here are Subshell's advantages over existing Node.js based shells.
 In fact, you can load the Subshell init script in Deno. 
 
 ```
-$　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.1/init.ts
+$　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.2/init.ts
 ...
 Deno 1.23.1
 exit using ctrl+d or close()
