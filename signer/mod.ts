@@ -1,30 +1,38 @@
-import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.1/api/mod.ts';
-import type { Signer, SignerResult } from 'https://deno.land/x/polkadot@0.0.1/api/types';
+import {
+  ApiPromise,
+  WsProvider,
+} from "https://deno.land/x/polkadot@0.0.1/api/mod.ts";
+import type {
+  Signer,
+  SignerResult,
+} from "https://deno.land/x/polkadot@0.0.1/api/types";
 import type {
   Registry,
   SignerPayloadJSON,
   SignerPayloadRaw,
-} from 'https://deno.land/x/polkadot@0.0.1/types/types';
-import { Keyring } from 'https://deno.land/x/polkadot@0.0.1/api/mod.ts';
-import { createTestPairs } from 'https://deno.land/x/polkadot@0.0.1/keyring/mod.ts';
+} from "https://deno.land/x/polkadot@0.0.1/types/types";
+import { Keyring } from "https://deno.land/x/polkadot@0.0.1/api/mod.ts";
+import { createTestPairs } from "https://deno.land/x/polkadot@0.0.1/keyring/mod.ts";
 
 export function VerboseSigner(inner: Signer): Signer {
   async function signRaw(payload: SignerPayloadRaw): Promise<SignerResult> {
-    console.log('[INFO] method: signRaw, args:', payload);
+    console.log("[INFO] method: signRaw, args:", payload);
     let result = await inner.signRaw(payload);
-    console.log('[INFO] result:', result);
+    console.log("[INFO] result:", result);
     return result;
   }
-  async function signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
-    console.log('[INFO] method: signPayload, args:', payload);
+  async function signPayload(
+    payload: SignerPayloadJSON,
+  ): Promise<SignerResult> {
+    console.log("[INFO] method: signPayload, args:", payload);
     let result = await inner.signPayload(payload);
-    console.log('[INFO] result:', result);
+    console.log("[INFO] result:", result);
     return result;
   }
   return {
     signRaw,
     signPayload,
-  }
+  };
 }
 
 // export const Alice = createTestPairs().alice;

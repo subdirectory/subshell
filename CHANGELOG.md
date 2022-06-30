@@ -1,8 +1,9 @@
 # CHANGELOG
 
-## 0.0.1 Jun 26, 2022
+## 0.0.2 Jun 30, 2022
 
-- release 0.0.1
+- add tini.ts
+- add main.ts
 
 ## 0.0.0-9 Jun 26, 2022
 
