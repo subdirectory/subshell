@@ -52,7 +52,7 @@ function progInfo() {
   const info = {
     // "⚙️ v8 version ": Deno.version.v8,
     // "🇹 TypeScript version ": Deno.version.typescript,
-    "🦕 Deno": "1.23.0",
+    "🦕 Deno": Deno.version.deno,
     "📗 Wiki": "https://wiki.subshell.xyz",
     "🙋 Issues": "https://github.com/btwiuse/subshell/issues",
     // "⛓️ RPC Pprvider": PROVIDER,
