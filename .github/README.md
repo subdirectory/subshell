@@ -13,7 +13,7 @@ Substrate API playground in a Deno 🦕 repl, using Polkadot.js extension wallet
 Subshell at its core is a TypeScript repl with these preloaded lines:
 
 ```typescript
-import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.1/api/mod.ts';
+import { ApiPromise, WsProvider } from 'https://deno.land/x/polkadot@0.0.2/api/mod.ts';
 
 const provider = new WsProvider(`wss://polkadot.api.onfinality.io/public-ws`);
 
@@ -57,7 +57,7 @@ Maintainers of Polkadot.js libraries have made a preview release for Deno under 
 
 You can import them like this in the Deno repl:
 ```
-import { stringToU8a } from 'https://deno.land/x/polkadot@0.0.1/util/mod.ts';
+import { stringToU8a } from 'https://deno.land/x/polkadot@0.0.2/util/mod.ts';
 ```
 
 Subshell sessions run in patched [denoland/deno](https://github.com/denoland/deno) to provide better repl experience. The frontend is based on [polkadot-js/apps](https://github.com/polkadot-js/apps). The modified code will be published soon.
@@ -104,7 +104,7 @@ Here are Subshell's advantages over existing Node.js based shells.
 In fact, you can load the Subshell init script in Deno. 
 
 ```
-$　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.2/init.ts
+$　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.3/init.ts
 ...
 Deno 1.23.1
 exit using ctrl+d or close()
