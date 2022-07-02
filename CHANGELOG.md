@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.0.3-1 Jun 30, 2022
+
+- fix entry script version
+- deno fmt
+
 ## 0.0.3 Jun 30, 2022
 
 - switch to upstream Deno
