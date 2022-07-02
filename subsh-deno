@@ -15,5 +15,5 @@ if [[ "$1" == cache ]]; then
   done
   $DENO run --unstable --compat -A cache.ts
 else
-  $DENO repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.2/init.ts
+  $DENO repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.3-1/init.ts
 fi
