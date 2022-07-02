@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.0.3 Jun 30, 2022
+
+- switch to upstream Deno
+- upgrade to deno.land/x/polkadot@0.0.2
+
 ## 0.0.2 Jun 30, 2022
 
 - add tini.ts
