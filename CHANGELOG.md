@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.0.3-2 July 4, 2022
+
+- revert to subshell binary
+- upgrade to deno.land/x/polkadot@0.0.3
+
 ## 0.0.3-1 Jun 30, 2022
 
 - fix entry script version

@@ -5,7 +5,7 @@ if [[ -z "$RUNNING_IN_DOCKER" ]]; then
   cd $(dirname $(realpath $0))
 fi
 
-DENO=deno
+DENO=subshell
 
 if [[ "$1" == cache ]]; then
   until
@@ -15,5 +15,6 @@ if [[ "$1" == cache ]]; then
   done
   $DENO run --unstable --compat -A cache.ts
 else
+# $DENO repl --v8-flags=--trace-side-effect-free-debug-evaluate --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.3-1/init.ts
   $DENO repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.0.3-1/init.ts
 fi
