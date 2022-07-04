@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.3-3 July 4, 2022
+- republish
+
 ## 0.0.3-2 July 4, 2022
 
 - revert to subshell binary
