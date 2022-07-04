@@ -6,6 +6,6 @@ const status = await Deno.run({
     "repl",
     "--unstable",
     "--compat",
-    "--eval-file=https://deno.land/x/subshell@0.0.3-2/init.ts",
+    "--eval-file=https://deno.land/x/subshell@0.0.3-3/init.ts",
   ],
 }).status();
