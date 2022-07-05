@@ -10,14 +10,14 @@ import type {
   Registry,
   SignerPayloadJSON,
   SignerPayloadRaw,
-} from "https://deno.land/x/polkadot@0.0.3/types/mod.ts";
+} from "https://deno.land/x/polkadot@0.0.3/types/types/index.ts";
 import { Keyring } from "https://deno.land/x/polkadot@0.0.3/api/mod.ts";
 import { createTestPairs } from "https://deno.land/x/polkadot@0.0.3/keyring/mod.ts";
 
 export function VerboseSigner(inner: Signer): Signer {
   async function signRaw(payload: SignerPayloadRaw): Promise<SignerResult> {
     console.log("[INFO] method: signRaw, args:", payload);
-    let result = await inner.signRaw(payload);
+    let result = await inner.signRaw!(payload);
     console.log("[INFO] result:", result);
     return result;
   }
@@ -25,7 +25,7 @@ export function VerboseSigner(inner: Signer): Signer {
     payload: SignerPayloadJSON,
   ): Promise<SignerResult> {
     console.log("[INFO] method: signPayload, args:", payload);
-    let result = await inner.signPayload(payload);
+    let result = await inner.signPayload!(payload);
     console.log("[INFO] result:", result);
     return result;
   }

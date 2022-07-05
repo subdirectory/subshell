@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.3-6 July 5, 2022
+- fix `deno check --unstable init.ts`
+
 ## 0.0.3-5 July 5, 2022
 - deno check: fix client import
 

@@ -1,9 +1,10 @@
+import "https://deno.land/x/polkadot@0.0.3/api-augment/mod.ts";
 import {
   ApiPromise,
   WsProvider,
 } from "https://deno.land/x/polkadot@0.0.3/api/mod.ts";
-import { Client } from "https://deno.land/x/subshell@0.0.3-5/client/mod.ts";
-import { VerboseSigner } from "https://deno.land/x/subshell@0.0.3-5/signer/mod.ts";
+import { Client } from "./client/mod.ts";
+import { VerboseSigner } from "./signer/mod.ts";
 
 const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
 const PROVIDER = Deno.env.get("PROVIDER") ?? "wss://rpc.polkadot.io";
@@ -38,7 +39,7 @@ export const subshellBannerLeft = `
 `.replaceAll("*", "\\");
 
 export function showAsciiBanner() {
-  const { columns } = Deno.consoleSize(); // --unstable
+  const { columns } = Deno.consoleSize(0); // --unstable
   if (columns > 54) {
     console.log(`%c${subshellBannerRight}`, "color: blue");
   } else if (columns >= 40) {
@@ -49,7 +50,7 @@ export function showAsciiBanner() {
 function progInfo() {
   /* print program info from package.json */
 
-  const info = {
+  const info: { [key: string]: string } = {
     // "⚙️ v8 version ": Deno.version.v8,
     // "🇹 TypeScript version ": Deno.version.typescript,
     "🦕 Deno": Deno.version.deno,
@@ -74,7 +75,7 @@ progInfo();
 
 console.log();
 
-function info(msg: string = "", prefix = "  ") {
+function info(msg: any = "", prefix = "  ") {
   console.log(`%c${prefix} %c${msg}`, "color: yellow", "color: white");
 }
 
@@ -94,9 +95,10 @@ const api = await ApiPromise.create({ provider: wsProvider, types: TYPES });
 
 interface ISubshell {
   extension?: Client;
+  showExamples(): Promise<void>;
 }
 
-let Subshell = {
+let Subshell: ISubshell = {
   showExamples: async () => {
     info();
     info(`Hello and welcome! Here are some Subshell basic examples to try:`);
@@ -113,7 +115,7 @@ let Subshell = {
     await sleep();
     info("get current block", "💁");
     info("> (await api.query.system.number()).toNumber()");
-    info((await api.query.system.number()).toNumber());
+    info((await api.query.system.number() as any).toNumber());
     info();
     await sleep();
     info("get runtime metadata version", "💁");
@@ -124,10 +126,8 @@ let Subshell = {
     info("get accounts in Polkadot.js extension wallet", "💁");
     info("> await Subshell.extension?.web3Accounts()");
     info(
-      console.log(
-        (await Subshell.extension?.web3Accounts()) ||
-          "   No injected account was found. ¯_(ツ)_/¯ \n   You may want to install the Polkadot.js wallet extension and setup the keyring first.",
-      ),
+      (await Subshell.extension?.web3Accounts()) ||
+        "   No injected account was found. ¯_(ツ)_/¯ \n   You may want to install the Polkadot.js wallet extension and setup the keyring first.",
     );
     info();
     await sleep();
@@ -166,9 +166,9 @@ if (SESSION_ID) {
 }
 info(`api has been injected into the global object.`);
 
-{
+if (Subshell.extension) {
   info(`Connecting to the Polkadot.js browser wallet extension...`);
-  let __accounts = await Subshell.extension?.web3Accounts();
+  let __accounts: unknown[] = await Subshell.extension?.web3Accounts();
   if (__accounts && __accounts.length > 0) {
     api.setSigner(Subshell.extension);
     info(`Polkadot.js extension signer bridge has been established.`, "✨");

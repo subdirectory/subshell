@@ -10,7 +10,7 @@ import type {
   Registry,
   SignerPayloadJSON,
   SignerPayloadRaw,
-} from "https://deno.land/x/polkadot@0.0.3/types/mod.ts";
+} from "https://deno.land/x/polkadot@0.0.3/types/types/index.ts";
 
 export class Client implements Signer {
   private encoder = new TextEncoder();
@@ -18,7 +18,7 @@ export class Client implements Signer {
   private base: string;
   private id: string;
 
-  constructor(base, id) {
+  constructor(base: string, id: string) {
     this.base = base;
     this.id = id;
   }
@@ -46,7 +46,7 @@ export class Client implements Signer {
     while (!isReady) await new Promise((resolve) => setTimeout(resolve, 200));
     return ws;
   }
-  async selectAccount(): string | null {
+  async selectAccount(): Promise<string | null> {
     let ws = await this.dial();
     return new Promise((resolve, reject) => {
       ws.onmessage = (e) => {
@@ -62,7 +62,7 @@ export class Client implements Signer {
       ws.send(this.encoder.encode(line));
     });
   }
-  async web3Accounts() {
+  async web3Accounts(): Promise<unknown[]> {
     let ws = await this.dial();
     return new Promise((resolve, reject) => {
       ws.onmessage = (e) => {
@@ -80,7 +80,7 @@ export class Client implements Signer {
   }
   async signRaw({ address, data }: SignerPayloadRaw): Promise<SignerResult> {
     let ws = await this.dial();
-    const result = await new Promise((resolve, reject) => {
+    const result = await new Promise<SignerResult>((resolve, reject) => {
       ws.onmessage = (e) => {
         let cmd = this.decoder.decode(e.data);
         // console.log("received", cmd);
@@ -99,7 +99,7 @@ export class Client implements Signer {
   }
   async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     let ws = await this.dial();
-    const result = await new Promise((resolve, reject) => {
+    const result = await new Promise<SignerResult>((resolve, reject) => {
       ws.onmessage = (e) => {
         let cmd = this.decoder.decode(e.data);
         // console.log("received", cmd);
