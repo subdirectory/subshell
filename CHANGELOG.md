@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.4-2 July 5, 2022
+- use absolute import path in init.ts
+
 ## 0.0.4-1 July 5, 2022
 - bump to deno.land/x/polkadot@0.0.4-2
 
