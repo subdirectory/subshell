@@ -4,7 +4,7 @@ import {
   WsProvider,
 } from "https://deno.land/x/polkadot@0.0.3/api/mod.ts";
 import { Client } from "./client/mod.ts";
-import { VerboseSigner } from "./signer/mod.ts";
+// import { VerboseSigner } from "./signer/mod.ts";
 
 const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
 const PROVIDER = Deno.env.get("PROVIDER") ?? "wss://rpc.polkadot.io";
@@ -75,6 +75,7 @@ progInfo();
 
 console.log();
 
+// deno-lint-ignore no-explicit-any
 function info(msg: any = "", prefix = "  ") {
   console.log(`%c${prefix} %c${msg}`, "color: yellow", "color: white");
 }
@@ -84,7 +85,7 @@ const customTypes = JSON.stringify(TYPES) != "{}" ? "Yes" : "None";
 info(`Custom types: ${customTypes}`);
 info("api is initializing. Please hold on...");
 
-async function sleep(ms: number = 2000) {
+async function sleep(ms = 2000) {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -98,7 +99,7 @@ interface ISubshell {
   showExamples(): Promise<void>;
 }
 
-let Subshell: ISubshell = {
+const Subshell: ISubshell = {
   showExamples: async () => {
     info();
     info(`Hello and welcome! Here are some Subshell basic examples to try:`);
@@ -115,6 +116,7 @@ let Subshell: ISubshell = {
     await sleep();
     info("get current block", "💁");
     info("> (await api.query.system.number()).toNumber()");
+    // deno-lint-ignore no-explicit-any
     info((await api.query.system.number() as any).toNumber());
     info();
     await sleep();
@@ -168,7 +170,7 @@ info(`api has been injected into the global object.`);
 
 if (Subshell.extension) {
   info(`Connecting to the Polkadot.js browser wallet extension...`);
-  let accounts = await Subshell.extension?.web3Accounts();
+  const accounts = await Subshell.extension?.web3Accounts();
   if (accounts.length > 0) {
     api.setSigner(Subshell.extension);
     info(`Polkadot.js extension signer bridge has been established.`, "✨");

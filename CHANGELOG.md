@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.0.4 July 5, 2022
+- bump to deno.land/x/polkadot@0.0.4-1
+- add .vscode config
+- add import_map.json
+
 ## 0.0.3-7 July 5, 2022
 - simplify
 
