@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.4-1 July 5, 2022
+- bump to deno.land/x/polkadot@0.0.4-2
+
 ## 0.0.4 July 5, 2022
 - bump to deno.land/x/polkadot@0.0.4-1
 - add .vscode config
