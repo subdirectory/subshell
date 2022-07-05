@@ -1,8 +1,8 @@
-import "https://deno.land/x/polkadot@0.0.3/api-augment/mod.ts";
+import "https://deno.land/x/polkadot@0.0.4-1/api-augment/mod.ts";
 import {
   ApiPromise,
   WsProvider,
-} from "https://deno.land/x/polkadot@0.0.3/api/mod.ts";
+} from "https://deno.land/x/polkadot@0.0.4-1/api/mod.ts";
 import { Client } from "./client/mod.ts";
 // import { VerboseSigner } from "./signer/mod.ts";
 
