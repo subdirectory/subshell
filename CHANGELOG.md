@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.3-5 July 5, 2022
+- deno check: fix client import
+
 ## 0.0.3-4 July 5, 2022
 - deno check: fix signer import
 
