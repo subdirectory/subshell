@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.3-7 July 5, 2022
+- simplify
+
 ## 0.0.3-6 July 5, 2022
 - fix `deno check --unstable init.ts`
 

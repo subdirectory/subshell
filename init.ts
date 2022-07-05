@@ -168,8 +168,8 @@ info(`api has been injected into the global object.`);
 
 if (Subshell.extension) {
   info(`Connecting to the Polkadot.js browser wallet extension...`);
-  let __accounts: unknown[] = await Subshell.extension?.web3Accounts();
-  if (__accounts && __accounts.length > 0) {
+  let accounts = await Subshell.extension?.web3Accounts();
+  if (accounts.length > 0) {
     api.setSigner(Subshell.extension);
     info(`Polkadot.js extension signer bridge has been established.`, "✨");
   } else {
