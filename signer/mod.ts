@@ -5,12 +5,12 @@ import {
 import type {
   Signer,
   SignerResult,
-} from "https://deno.land/x/polkadot@0.0.3/api/types";
+} from "https://deno.land/x/polkadot@0.0.3/api/types/index.ts";
 import type {
   Registry,
   SignerPayloadJSON,
   SignerPayloadRaw,
-} from "https://deno.land/x/polkadot@0.0.3/types/types";
+} from "https://deno.land/x/polkadot@0.0.3/types/mod.ts";
 import { Keyring } from "https://deno.land/x/polkadot@0.0.3/api/mod.ts";
 import { createTestPairs } from "https://deno.land/x/polkadot@0.0.3/keyring/mod.ts";
 

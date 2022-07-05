@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.3-4 July 5, 2022
+- deno check: fix signer import
+
 ## 0.0.3-3 July 4, 2022
 - republish
 
