@@ -26,7 +26,7 @@ const RE_PKG = /deno\.land\/x\/subshell(@\d*\.\d*\.\d*(-\d*)?)?\//g;
 // regex for matching `deno.land/x/polkadot[@<version>]/
 const RE_PKG_POLKADOT = /deno\.land\/x\/polkadot(@\d*\.\d*\.\d*(-\d*)?)?\//g;
 
-const POLKADOT_VERSION = "0.0.4";
+const POLKADOT_VERSION = "0.0.5";
 
 // execute a command
 async function exec(...cmd: string[]): Promise<void> {
