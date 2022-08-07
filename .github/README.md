@@ -303,7 +303,7 @@ Polkadot.js wallet extension in your browser🌐.
 
 ### Q: Does it use WASM?
 
-> No, it doesn't. The repl is running in a remote worker, not in our brower.
+> No, it doesn't. The repl is running remotely in a linux container, not in our browser.
 
 ### Q: Can I use MetaMask on Moonbeam and other EVM compatible chains?
 
