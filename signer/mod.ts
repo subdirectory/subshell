@@ -1,18 +1,18 @@
 import {
   ApiPromise,
   WsProvider,
-} from "https://deno.land/x/polkadot@0.0.9/api/mod.ts";
+} from "https://deno.land/x/polkadot@0.1.0/api/mod.ts";
 import type {
   Signer,
   SignerResult,
-} from "https://deno.land/x/polkadot@0.0.9/api/types/index.ts";
+} from "https://deno.land/x/polkadot@0.1.0/api/types/index.ts";
 import type {
   Registry,
   SignerPayloadJSON,
   SignerPayloadRaw,
-} from "https://deno.land/x/polkadot@0.0.9/types/types/index.ts";
-import { Keyring } from "https://deno.land/x/polkadot@0.0.9/api/mod.ts";
-import { createTestPairs } from "https://deno.land/x/polkadot@0.0.9/keyring/mod.ts";
+} from "https://deno.land/x/polkadot@0.1.0/types/types/index.ts";
+import { Keyring } from "https://deno.land/x/polkadot@0.1.0/api/mod.ts";
+import { createTestPairs } from "https://deno.land/x/polkadot@0.1.0/keyring/mod.ts";
 
 export function VerboseSigner(inner: Signer): Signer {
   async function signRaw(payload: SignerPayloadRaw): Promise<SignerResult> {
