@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.4-1 Sept 4, 2022
+- add GitHub Actions Docker CI
+
 ## 0.2.4 Sept 3, 2022
 - bump to deno.land/x/polkadot@0.2.4
 
