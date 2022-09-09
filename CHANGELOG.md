@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.6 Sept 9, 2022
+- re-add [CI Skip]
+- bump to deno.land/x/polkadot@0.2.6
+- update Dockerfile: use arch based image
+
 ## 0.2.4-2 Sept 4, 2022
 - remove [CI Skip]
 
