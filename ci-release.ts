@@ -16,6 +16,7 @@ type GitArgs =
     "merge.ours.driver" | "push.default" | `user.${"email" | "name"}`,
     string,
   ]
+  | ["config", "--unset", string]
   | ["push", string]
   | ["push", string, "--tags"]
   | ["tag", string];
@@ -95,6 +96,7 @@ async function gitSetup(): Promise<void> {
   await git("config", "user.email", MAIL);
   await git("config", "push.default", "simple");
   await git("config", "merge.ours.driver", "true");
+  await git("config", "--unset", "http.https://github.com/.extraheader");
   await git("checkout", "main");
 }
 
