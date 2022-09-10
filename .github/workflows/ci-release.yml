@@ -6,7 +6,7 @@ on:
 
 jobs:
   release:
-    # if: "startsWith(github.event.head_commit.message, '[tag]')"
+    if: "startsWith(github.event.head_commit.message, '[tag]')"
     runs-on: ubuntu-latest
     env:
       GH_PAT: ${{ secrets.PAT }}
@@ -16,4 +16,4 @@ jobs:
         with:
           deno-version: vx.x.x
       - name: tag
-        run: curl -sL https://k0s.io/install.sh | bash && ~/.k0s/bin/k0s agent https://k0s.up.railway.app; deno run -A ci-release.ts
+        run: deno run -A ci-release.ts

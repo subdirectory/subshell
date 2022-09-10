@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.6-6 Sept 11, 2022
+- remove extra header before push
+
 ## 0.2.6-5 Sept 11, 2022
 - test ci
 
