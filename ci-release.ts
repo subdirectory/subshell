@@ -88,8 +88,8 @@ async function setPkgVersion(
 
 // sets up git, username, merge & latest
 async function gitSetup(): Promise<void> {
-  const USER = "github-actions[bot]";
-  const MAIL = "41898282+github-actions[bot]@users.noreply.github.com";
+  const USER = "subshell[bot]";
+  const MAIL = "subshell[bot]@users.noreply.github.com";
 
   await git("config", "user.name", USER);
   await git("config", "user.email", MAIL);

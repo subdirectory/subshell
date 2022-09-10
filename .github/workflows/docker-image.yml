@@ -3,6 +3,7 @@ name: Docker image
 on:
   push:
   workflow_dispatch:
+  repository_dispatch:
 
 jobs:
   docker-image:

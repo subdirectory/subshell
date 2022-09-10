@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.6-3 Sept 11, 2022
+- test ci
+
 ## 0.2.6-2 Sept 11, 2022
 - test ci
 
