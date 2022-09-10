@@ -107,8 +107,8 @@ async function gitPush(version: string): Promise<void> {
   await git("add", "--all", ".");
   await git(
     "commit",
-    "--no-status",
-    "--quiet",
+    // "--no-status",
+    // "--quiet",
     "-m",
     // `[CI Skip] deno.land/x/subshell@${version}`,
     `deno.land/x/subshell@${version}`,

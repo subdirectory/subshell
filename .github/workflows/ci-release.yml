@@ -1,4 +1,4 @@
-name: release
+name: CI Release
 
 on:
   push:
@@ -9,11 +9,11 @@ jobs:
     if: "startsWith(github.event.head_commit.message, '[tag]')"
     runs-on: ubuntu-latest
     env:
-      GH_PAT: ${{ secrets.GH_PAT }}
+      GH_PAT: ${{ secrets.PAT }}
     steps:
       - uses: actions/checkout@v2
       - uses: denoland/setup-deno@v1
         with:
           deno-version: vx.x.x
       - name: tag
-        run: deno run --allow-read --allow-run --allow-write --allow-env ci-release.ts
+        run: deno run -A ci-release.ts
