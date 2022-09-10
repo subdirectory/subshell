@@ -110,8 +110,8 @@ async function gitPush(version: string): Promise<void> {
     "--no-status",
     "--quiet",
     "-m",
-    `[CI Skip] deno.land/x/subshell@${version}`,
-    // `deno.land/x/subshell@${version}`,
+    // `[CI Skip] deno.land/x/subshell@${version}`,
+    `deno.land/x/subshell@${version}`,
   );
   await git("push", REPO);
   await git("tag", version);
