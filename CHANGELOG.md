@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.6-1 Sept 11, 2022
+- test ci
+
 ## 0.2.6 Sept 9, 2022
 - re-add [CI Skip]
 - bump to deno.land/x/polkadot@0.2.6
