@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.7 Sept 17, 2022
+- bump to deno.land/x/polkadot@0.2.7
+
 ## 0.2.6-6 Sept 11, 2022
 - remove extra header before push
 
