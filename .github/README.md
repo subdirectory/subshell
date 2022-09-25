@@ -17,7 +17,7 @@ Subshell at its core is a TypeScript repl with these preloaded lines:
 import {
   ApiPromise,
   WsProvider,
-} from "https://deno.land/x/polkadot@0.2.7/api/mod.ts";
+} from "https://deno.land/x/polkadot@0.2.8/api/mod.ts";
 
 const provider = new WsProvider(`wss://polkadot.api.onfinality.io/public-ws`);
 
@@ -77,7 +77,7 @@ the [deno.land/x/polkadot](https://deno.land/x/polkadot) namespace.
 You can import them like this in the Deno repl:
 
 ```
-import { stringToU8a } from 'https://deno.land/x/polkadot@0.2.7/util/mod.ts';
+import { stringToU8a } from 'https://deno.land/x/polkadot@0.2.8/util/mod.ts';
 ```
 
 Subshell sessions run in patched
@@ -148,7 +148,7 @@ Here are Subshell's advantages over existing Node.js based shells.
 In fact, you can load the Subshell init script in Deno.
 
 ```
-$　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.2.7/init.ts
+$　deno repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.2.8/init.ts
 ...
 Deno 1.23.2
 exit using ctrl+d or close()
