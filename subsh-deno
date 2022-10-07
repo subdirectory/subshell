@@ -9,12 +9,12 @@ DENO=subshell
 
 if [[ "$1" == cache ]]; then
   until
-    $DENO run --unstable --compat -A cache.ts 
+    $DENO run --unstable -A cache.ts 
   do
     sleep 1
   done
-  $DENO run --unstable --compat -A cache.ts
+  $DENO run --unstable -A cache.ts
 else
-# $DENO repl --v8-flags=--trace-side-effect-free-debug-evaluate --unstable --compat --eval-file=https://deno.land/x/subshell@0.2.9/init.ts
-  $DENO repl --unstable --compat --eval-file=https://deno.land/x/subshell@0.2.9/init.ts
+# $DENO repl --v8-flags=--trace-side-effect-free-debug-evaluate --unstable --eval-file=https://deno.land/x/subshell@0.2.9/init.ts
+  $DENO repl --unstable --eval-file=https://deno.land/x/subshell@0.2.9/init.ts
 fi
