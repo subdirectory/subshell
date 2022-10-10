@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.10 Oct 3, 2022
+- bump to deno.land/x/polkadot@0.2.10
+- remove deprecated --compat flag
+- replace npm:fs import path with std/node/fs
+
 ## 0.2.9 Oct 3, 2022
 - bump to deno.land/x/polkadot@0.2.9
 
