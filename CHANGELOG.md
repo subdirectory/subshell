@@ -1,6 +1,9 @@
 # CHANGELOG
 
-## 0.2.10 Oct 3, 2022
+## 0.2.10-1 Oct 13, 2022
+- include SUBSHELL_VERSION in Dockerfile
+
+## 0.2.10 Oct 10, 2022
 - bump to deno.land/x/polkadot@0.2.10
 - remove deprecated --compat flag
 - replace npm:fs import path with std/node/fs

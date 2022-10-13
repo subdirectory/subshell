@@ -24,6 +24,9 @@ type GitArgs =
 // regex for matching `deno.land/x/subshell[@<version>]/
 const RE_PKG = /deno\.land\/x\/subshell(@\d*\.\d*\.\d*(-\d*)?)?\//g;
 
+// regex for matching `ENV SUBSHELL_VERSION <version>
+const RE_SUBSHELL_VERSION = /ENV\ SUBSHELL_VERSION\ .*/g;
+
 // regex for matching `deno.land/x/polkadot[@<version>]/
 const RE_PKG_POLKADOT = /deno\.land\/x\/polkadot(@\d*\.\d*\.\d*(-\d*)?)?\//g;
 
@@ -59,6 +62,20 @@ async function getVersion(): Promise<string> {
   }
 
   return vermatch[1];
+}
+
+async function setSubshellVersion(
+  regexp: RegExp,
+  version: string,
+  dockerfile: string,
+): Promise<void> {
+  const contents = await Deno.readTextFile(dockerfile);
+  if (regexp.test(contents)) {
+    await Deno.writeTextFile(
+      dockerfile,
+      contents.replace(regexp, `ENV SUBSHELL_VERSION ${version}`),
+    );
+  }
 }
 
 async function setPkgVersion(
@@ -148,6 +165,8 @@ const version = await getVersion();
 
 await gitSetup();
 await createModTs();
+// sets the version to Dockerfile env SUBSHELL_VERSION
+await setSubshellVersion(RE_SUBSHELL_VERSION, version, "Dockerfile");
 // sets the version globally to all deno.land/x/subshell imports
 await setPkgVersion(RE_PKG, "deno.land/x/subshell", version, ".");
 // sets the version globally to all deno.land/x/polkadot imports
