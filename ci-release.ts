@@ -30,7 +30,7 @@ const RE_SUBSHELL_VERSION = /ENV\ SUBSHELL_VERSION\ .*/g;
 // regex for matching `deno.land/x/polkadot[@<version>]/
 const RE_PKG_POLKADOT = /deno\.land\/x\/polkadot(@\d*\.\d*\.\d*(-\d*)?)?\//g;
 
-const POLKADOT_VERSION = "0.2.10";
+const POLKADOT_VERSION = await Deno.readTextFile("POLKADOT_VERSION");
 
 // execute a command
 async function exec(...cmd: string[]): Promise<void> {

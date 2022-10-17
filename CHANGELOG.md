@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.11 Oct 17, 2022
+- bump to deno.land/x/polkadot@0.2.11
+
 ## 0.2.10-1 Oct 13, 2022
 - include SUBSHELL_VERSION in Dockerfile
 
