@@ -4,11 +4,11 @@ in a Deno 🦕 repl, using polkadot-js extension as remote signer ✍️.
 Start with browser extension integration
 
 ```
-$　deno repl --unstable --eval-file=https://deno.land/x/subshell@0.2.11-2/init.ts
+$　deno repl --unstable --eval-file=https://deno.land/x/subshell@0.2.12/init.ts
 ```
 
 Start in lite mode
 
 ```
-$　deno repl --eval-file=https://deno.land/x/subshell@0.2.11-2/tini.ts
+$　deno repl --eval-file=https://deno.land/x/subshell@0.2.12/tini.ts
 ```
