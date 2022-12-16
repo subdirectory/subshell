@@ -2,7 +2,7 @@ FROM btwiuse/k0s AS k0s
 
 FROM btwiuse/dkg AS dkg
 
-# dkg push -i btwiuse/subshell:bin -f subshell
+# cargo build --release && cd ./target/release/ && cp deno subshell && dkg push -i btwiuse/subshell:bin -f subshell
 FROM btwiuse/subshell:bin AS subshell-bin
 
 FROM btwiuse/arch:deno
