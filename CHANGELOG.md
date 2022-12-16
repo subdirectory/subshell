@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.19-1 Dec 16, 2022
+- bump to deno 1.29.1
+- restrict repl permissions to --allow-net --allow-env
+
 ## 0.2.19 Dec 4, 2022
 - bump to deno.land/x/polkadot@0.2.19
 
