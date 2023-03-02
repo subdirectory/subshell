@@ -3,7 +3,7 @@ import {
   WsProvider,
 } from "https://deno.land/x/polkadot@0.2.28/api/mod.ts";
 
-import * as fs from "https://deno.land/std/node/fs.ts";
+import fs from "node:fs";
 
 async function initApi() {
   const PROVIDER = Deno.env.get("PROVIDER") ?? "wss://rpc.polkadot.io";

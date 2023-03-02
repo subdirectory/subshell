@@ -1,16 +1,22 @@
 # CHANGELOG
 
-## 0.2.28 feb 22, 2023
+## 0.2.28-2 Mar 2, 2023
+- import "node:fs" in cache.ts
+
+## 0.2.28-1 Mar 2, 2023
+- bump k0s, fixing terminal resize issue
+
+## 0.2.28 Feb 22, 2023
 - bump to deno.land/x/polkadot@0.2.28
 
-## 0.2.27 feb 14, 2023
+## 0.2.27 Feb 14, 2023
 - bump to deno.land/x/polkadot@0.2.27
 - fix ci
 
-## 0.2.26 feb 10, 2023
+## 0.2.26 Feb 10, 2023
 - bump to deno.land/x/polkadot@0.2.26
 
-## 0.2.25 feb 2, 2023
+## 0.2.25 Feb 2, 2023
 - bump to deno.land/x/polkadot@0.2.25
 
 ## 0.2.24 Jan 29, 2023
