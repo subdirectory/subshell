@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.28-1 feb 22, 2023
+- bump k0s, fixing terminal resize issue
+
 ## 0.2.28 feb 22, 2023
 - bump to deno.land/x/polkadot@0.2.28
 
