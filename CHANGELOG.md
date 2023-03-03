@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.28-3 Mar 3, 2023
+- bump deno to v1.31.1
+
 ## 0.2.28-2 Mar 2, 2023
 - import "node:fs" in cache.ts
 
