@@ -39,6 +39,6 @@ RUN chmod 644 /cache/deno_history.txt
 
 USER subshell
 
-ENV SUBSHELL_VERSION 0.2.30
+ENV SUBSHELL_VERSION 0.2.31
 
 CMD hub
