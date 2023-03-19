@@ -1,6 +1,7 @@
 import "https://deno.land/x/polkadot@0.2.31/api-augment/mod.ts";
 import {
   ApiPromise,
+  ApiRx,
   WsProvider,
 } from "https://deno.land/x/polkadot@0.2.31/api/mod.ts";
 import { Client } from "https://deno.land/x/subshell@0.2.31/client/mod.ts";
@@ -93,6 +94,7 @@ const wsProvider = new WsProvider(
   PROVIDER,
 );
 const api = await ApiPromise.create({ provider: wsProvider, types: TYPES });
+const api$ = await ApiRx.create({ provider: wsProvider, types: TYPES });
 
 interface ISubshell {
   extension?: Client;
