@@ -8,6 +8,6 @@ const status = await Deno.run({
     "--allow-env",
     "--no-prompt",
     "--unstable",
-    "--eval-file=https://deno.land/x/subshell@0.2.34/init.ts",
+    "--eval-file=https://deno.land/x/subshell@0.2.35/init.ts",
   ],
 }).status();
