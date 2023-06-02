@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.40-1 June 3, 2023
+- bump deno to v1.34.1
+
 ## 0.2.40 May 21, 2023
 - bump to deno.land/x/polkadot@0.2.40
 
