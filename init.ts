@@ -1,10 +1,10 @@
-import "https://deno.land/x/polkadot@0.2.40/api-augment/mod.ts";
+import "https://deno.land/x/polkadot@0.2.41/api-augment/mod.ts";
 import {
   ApiPromise,
   WsProvider,
-} from "https://deno.land/x/polkadot@0.2.40/api/mod.ts";
-import { Client } from "https://deno.land/x/subshell@0.2.40-1/client/mod.ts";
-// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.40-1/signer/mod.ts";
+} from "https://deno.land/x/polkadot@0.2.41/api/mod.ts";
+import { Client } from "https://deno.land/x/subshell@0.2.41/client/mod.ts";
+// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.41/signer/mod.ts";
 
 const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
 const PROVIDER = Deno.env.get("PROVIDER") ?? "wss://rpc.polkadot.io";
