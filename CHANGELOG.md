@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.42 Sept 17, 2023
+- bump to deno.land/x/polkadot@0.2.42
+
 ## 0.2.41 June 12, 2023
 - bump to deno.land/x/polkadot@0.2.41
 
