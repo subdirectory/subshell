@@ -1,7 +1,10 @@
 # CHANGELOG
 
+## 0.2.42-2 Sept 20, 2023
+- add SIGINT handler in repl
+
 ## 0.2.42-1 Sept 20, 2023
-- bump to deno.land/x/polkadot@0.2.42-1
+- add initial support for gear
 
 ## 0.2.42 Sept 17, 2023
 - bump to deno.land/x/polkadot@0.2.42
