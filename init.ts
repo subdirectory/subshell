@@ -3,12 +3,15 @@ import {
   ApiPromise,
   WsProvider,
 } from "https://deno.land/x/polkadot@0.2.42/api/mod.ts";
+import { GearApi } from "https://gear-js.deno.dev/api/src/index.ts";
 import { Client } from "https://deno.land/x/subshell@0.2.42/client/mod.ts";
 // import { VerboseSigner } from "https://deno.land/x/subshell@0.2.42/signer/mod.ts";
 
+const GEAR = !!Deno.env.get("GEAR");
+const DEFAULT_PROVIDER = GEAR ? "wss://rpc.vara-network.io" : "wss://rpc.polkadot.io";
 const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
-const PROVIDER = Deno.env.get("PROVIDER") ?? "wss://rpc.polkadot.io";
-const TYPES = JSON.parse(Deno.env.get("TYPES") ?? "{}");
+const PROVIDER = Deno.env.get("PROVIDER") ?? DEFAULT_PROVIDER;
+const TYPES = JSON.parse(Deno.env.get("TYPES") ?? "null");
 const HUB = Deno.env.get("HUB") ?? `ws://localhost:8000`;
 
 export const subshellBanner = `
@@ -92,7 +95,12 @@ async function sleep(ms = 2000) {
 const wsProvider = new WsProvider(
   PROVIDER,
 );
-const api = await ApiPromise.create({ provider: wsProvider, types: TYPES });
+let api;
+if (GEAR) {
+  api = await GearApi.create({ provider: wsProvider, types: TYPES });
+} else {
+  api = await ApiPromise.create({ provider: wsProvider, types: TYPES });
+}
 
 interface ISubshell {
   extension?: Client;
