@@ -72,6 +72,10 @@ function progInfo() {
     });
 }
 
+Deno.addSignalListener("SIGINT", () => {
+  console.log("interrupted!");
+});
+
 showAsciiBanner();
 
 progInfo();
