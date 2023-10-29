@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.43 Oct 29, 2023
+- bump to deno.land/x/polkadot@0.2.43
+
 ## 0.2.42-2 Sept 20, 2023
 - add SIGINT handler in repl
 
