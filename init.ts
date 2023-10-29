@@ -1,11 +1,11 @@
-import "https://deno.land/x/polkadot@0.2.42/api-augment/mod.ts";
+import "https://deno.land/x/polkadot@0.2.43/api-augment/mod.ts";
 import {
   ApiPromise,
   WsProvider,
-} from "https://deno.land/x/polkadot@0.2.42/api/mod.ts";
+} from "https://deno.land/x/polkadot@0.2.43/api/mod.ts";
 import { GearApi } from "https://gear-js.deno.dev/api/src/index.ts";
-import { Client } from "https://deno.land/x/subshell@0.2.42-2/client/mod.ts";
-// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.42-2/signer/mod.ts";
+import { Client } from "https://deno.land/x/subshell@0.2.43/client/mod.ts";
+// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.43/signer/mod.ts";
 
 const GEAR = !!Deno.env.get("GEAR");
 const DEFAULT_PROVIDER = GEAR ? "wss://rpc.vara-network.io" : "wss://rpc.polkadot.io";
