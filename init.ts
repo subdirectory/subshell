@@ -61,7 +61,7 @@ export async function showBanner() {
   let GearShellBannerURL =
     "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/GearShellBanner.png";
   let GearShellBannerImage = new Uint8Array(
-    await (await fetch(SubshellBannerURL)).arrayBuffer(),
+    await (await fetch(GearShellBannerURL)).arrayBuffer(),
   );
   let GearShellBannerSixel = await image2sixel(GearShellBannerImage);
 
