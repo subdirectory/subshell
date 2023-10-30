@@ -24,6 +24,7 @@ ADD subsh-deno /bin/
 
 COPY *.ts ./
 COPY package.json ./
+COPY deno.json ./
 
 ENV DENO_DIR=/cache
 
