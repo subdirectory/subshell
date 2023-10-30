@@ -52,12 +52,12 @@ jobs:
 
     - run: |
         docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/subdirectory/subshell:${{ github.sha }}
-        docker push subdirectory/subshell:${{ github.sha }}
+        docker push ghcr.io/subdirectory/subshell:${{ github.sha }}
       name: docker push ghcr sha
 
     - run: |
-        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/subdirectory/subshell
-        docker push ghcr.io/subdirectory/subshell
+        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/subdirectory/subshell:latest
+        docker push ghcr.io/subdirectory/subshell:latest
       if: github.ref == 'refs/heads/main'
       name: docker push ghcr latest
 
