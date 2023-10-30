@@ -6,6 +6,16 @@ import {
 import { GearApi } from "https://gear-js.deno.dev/api/src/index.ts";
 import { Client } from "https://deno.land/x/subshell@0.2.43/client/mod.ts";
 // import { VerboseSigner } from "https://deno.land/x/subshell@0.2.43/signer/mod.ts";
+import { fromPng } from "npm:@rgba-image/png";
+import * as sixel from "npm:sixel";
+import { stringToU8a } from "https://deno.land/x/polkadot@0.2.43/util/mod.ts";
+import {
+  ImageMagick,
+  initializeImageMagick,
+  MagickGeometry,
+} from "https://deno.land/x/imagemagick_deno@0.0.14/mod.ts";
+
+await initializeImageMagick();
 
 const GEAR = !!Deno.env.get("GEAR");
 const DEFAULT_PROVIDER = GEAR ? "wss://rpc.vara-network.io" : "wss://rpc.polkadot.io";
@@ -14,40 +24,35 @@ const PROVIDER = Deno.env.get("PROVIDER") ?? DEFAULT_PROVIDER;
 const TYPES = JSON.parse(Deno.env.get("TYPES") ?? "null");
 const HUB = Deno.env.get("HUB") ?? `ws://localhost:8000`;
 
-export const subshellBanner = `
- ____        _         _          _ _ 
-/ ___| _   _| |__  ___| |__   ___| | |
-*___ *| | | | '_ */ __| '_ * / _ * | |
- ___) | |_| | |_) *__ * | | |  __/ | |
-|____/ *__,_|_.__/|___/_| |_|*___|_|_|
-                                       
-`.replaceAll("*", "\\");
+async function image2sixel(imageBuffer: Uint8Array) : Uint8Array {
+  let resizedBuffer = await new Promise<Uint8Array>((resolve) => {
+    ImageMagick.read(imageBuffer, (image) => {
+      // console.log(image.width, image.height);
+      let scaleFactor = 160.0 / image.height;
+      const sizingData = new MagickGeometry(
+        image.width * scaleFactor,
+        image.height * scaleFactor,
+      );
+      image.resize(sizingData);
+      image.write((data) => resolve(data));
+    });
+  });
 
-export const subshellBannerRight = `
- ____        _         _          _ _    __          
-/ ___| _   _| |__  ___| |__   ___| | |   * *         
-*___ *| | | | '_ */ __| '_ * / _ * | |    * * 
- ___) | |_| | |_) *__ * | | |  __/ | |    / / _____ 
-|____/ *__,_|_.__/|___/_| |_|*___|_|_|   /_/ |_____|       
+  let s = await fromPng(resizedBuffer);
 
-`.replaceAll("*", "\\");
+  return stringToU8a(sixel.image2sixel(s.data, s.width, s.height));
+}
 
-export const subshellBannerLeft = `
- __            ____        _         _          _ _  
- * *          / ___| _   _| |__  ___| |__   ___| | | 
-  * *         *___ *| | | | '_ */ __| '_ * / _ * | | 
-  / / _____    ___) | |_| | |_) *__ * | | |  __/ | | 
- /_/ |_____|  |____/ *__,_|_.__/|___/_| |_|*___|_|_|       
-                                                      
-`.replaceAll("*", "\\");
-
-export function showAsciiBanner() {
+export async function showBanner() {
   const { columns } = Deno.consoleSize(0); // --unstable
-  if (columns > 54) {
-    console.log(`%c${subshellBannerRight}`, "color: blue");
-  } else if (columns >= 40) {
-    console.log(`%c${subshellBanner}`, "color: blue");
+  if (columns <= 100) {
+    return
   }
+  if (GEAR) {
+    Deno.stdout.writeSync(await image2sixel(Deno.readFileSync("./.github/GearShellBanner.png")));
+    return
+  }
+  Deno.stdout.writeSync(await image2sixel(Deno.readFileSync("./.github/SubshellBanner.png")));
 }
 
 function progInfo() {
@@ -76,7 +81,7 @@ Deno.addSignalListener("SIGINT", () => {
   console.log("interrupted!");
 });
 
-showAsciiBanner();
+await showBanner();
 
 progInfo();
 

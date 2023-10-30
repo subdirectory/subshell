@@ -22,9 +22,12 @@ RUN ln -sf /bin/hub /bin/agent
 
 ADD subsh-deno /bin/
 
+WORKDIR /app
+
 COPY *.ts ./
-COPY package.json ./
+COPY .github/ ./
 COPY deno.json ./
+COPY package.json ./
 
 ENV DENO_DIR=/cache
 
