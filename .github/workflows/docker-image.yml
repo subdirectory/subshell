@@ -51,17 +51,17 @@ jobs:
         password: ${{ secrets.GHCR }}
 
     - run: |
-        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/subdirectory/subshell:${{ github.sha }}
-        docker push ghcr.io/subdirectory/subshell:${{ github.sha }}
+        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/${{ github.actor }}/subshell:${{ github.sha }}
+        docker push ghcr.io/${{ github.actor }}/subshell:${{ github.sha }}
       name: docker push ghcr sha
 
     - run: |
-        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/subdirectory/subshell:latest
-        docker push ghcr.io/subdirectory/subshell:latest
+        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/${{ github.actor }}/subshell:latest
+        docker push ghcr.io/${{ github.actor }}/subshell:latest
       if: github.ref == 'refs/heads/main'
       name: docker push ghcr latest
 
     - run: |
-        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/subdirectory/subshell:${{ github.ref_name }}
-        docker push ghcr.io/subdirectory/subshell:${{ github.ref_name }}
+        docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/${{ github.actor }}/subshell:${{ github.ref_name }}
+        docker push ghcr.io/${{ github.actor }}/subshell:${{ github.ref_name }}
       name: docker push ghcr tag
