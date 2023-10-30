@@ -3,5 +3,5 @@
 
 // auto-generated via ci-release.ts, do not edit
 
-export * as client from "./client/mod.ts";
-export * as signer from "./signer/mod.ts";
+export * as client from './client/mod.ts';
+export * as signer from './signer/mod.ts';
