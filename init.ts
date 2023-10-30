@@ -18,13 +18,15 @@ import {
 await initializeImageMagick();
 
 const GEAR = !!Deno.env.get("GEAR");
-const DEFAULT_PROVIDER = GEAR ? "wss://rpc.vara-network.io" : "wss://rpc.polkadot.io";
+const DEFAULT_PROVIDER = GEAR
+  ? "wss://rpc.vara-network.io"
+  : "wss://rpc.polkadot.io";
 const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
 const PROVIDER = Deno.env.get("PROVIDER") ?? DEFAULT_PROVIDER;
 const TYPES = JSON.parse(Deno.env.get("TYPES") ?? "null");
 const HUB = Deno.env.get("HUB") ?? `ws://localhost:8000`;
 
-async function image2sixel(imageBuffer: Uint8Array) : Uint8Array {
+async function image2sixel(imageBuffer: Uint8Array): Uint8Array {
   let resizedBuffer = await new Promise<Uint8Array>((resolve) => {
     ImageMagick.read(imageBuffer, (image) => {
       // console.log(image.width, image.height);
@@ -46,13 +48,23 @@ async function image2sixel(imageBuffer: Uint8Array) : Uint8Array {
 export async function showBanner() {
   const { columns } = Deno.consoleSize(0); // --unstable
   if (columns <= 100) {
-    return
+    return;
   }
+  let SubshellBannerPath = ".github/SubshellBanner.png";
+  let SubshellBannerSixel = await image2sixel(
+    Deno.readFileSync(SubshellBannerPath),
+  );
+
+  let GearShellBannerPath = ".github/GearShellBanner.png";
+  let GearShellBannerSixel = await image2sixel(
+    Deno.readFileSync(GearShellBannerPath),
+  );
+
   if (GEAR) {
-    Deno.stdout.writeSync(await image2sixel(Deno.readFileSync("./.github/GearShellBanner.png")));
-    return
+    await Deno.stdout.write(GearShellBannerSixel);
+  } else {
+    await Deno.stdout.write(SubshellBannerSixel);
   }
-  Deno.stdout.writeSync(await image2sixel(Deno.readFileSync("./.github/SubshellBanner.png")));
 }
 
 function progInfo() {
