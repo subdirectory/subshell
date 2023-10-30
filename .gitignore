@@ -2,3 +2,4 @@ book
 index.html
 dist*
 mdbook
+deno.lock
