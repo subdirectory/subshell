@@ -4,8 +4,8 @@ import {
   WsProvider,
 } from "https://deno.land/x/polkadot@0.2.43/api/mod.ts";
 import { GearApi } from "https://gear-js.deno.dev/api/src/index.ts";
-import { Client } from "https://deno.land/x/subshell@0.2.43-3/client/mod.ts";
-// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.43-3/signer/mod.ts";
+import { Client } from "https://deno.land/x/subshell@0.2.43-7/client/mod.ts";
+// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.43-7/signer/mod.ts";
 import { fromPng } from "npm:@rgba-image/png";
 import * as sixel from "npm:sixel";
 import { stringToU8a } from "https://deno.land/x/polkadot@0.2.43/util/mod.ts";
