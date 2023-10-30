@@ -1,13 +1,13 @@
 # CHANGELOG
 
-## 0.2.43-3 Oct 30, 2023
+## 0.2.43-4 Oct 30, 2023
 - bump deno to v1.37.2
 - disable --node-modules-dir
 - add sixel banners
 - add banner for Gear Shell
 - ignore deno.lock
 - sixel bug workaround
-- push image to ghcr.io
+- push image to ghcr.io/btwiuse/subshell
 
 ## 0.2.43 Oct 29, 2023
 - bump to deno.land/x/polkadot@0.2.43
