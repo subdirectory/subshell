@@ -50,15 +50,20 @@ export async function showBanner() {
   if (columns <= 100) {
     return;
   }
-  let SubshellBannerPath = ".github/SubshellBanner.png";
-  let SubshellBannerSixel = await image2sixel(
-    Deno.readFileSync(SubshellBannerPath),
-  );
 
-  let GearShellBannerPath = ".github/GearShellBanner.png";
-  let GearShellBannerSixel = await image2sixel(
-    Deno.readFileSync(GearShellBannerPath),
+  let SubshellBannerURL =
+    "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/SubshellBanner.png";
+  let SubshellBannerImage = new Uint8Array(
+    await (await fetch(SubshellBannerURL)).arrayBuffer(),
   );
+  let SubshellBannerSixel = await image2sixel(SubshellBannerImage);
+
+  let GearShellBannerURL =
+    "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/GearShellBanner.png";
+  let GearShellBannerImage = new Uint8Array(
+    await (await fetch(SubshellBannerURL)).arrayBuffer(),
+  );
+  let GearShellBannerSixel = await image2sixel(GearShellBannerImage);
 
   if (GEAR) {
     await Deno.stdout.write(GearShellBannerSixel);

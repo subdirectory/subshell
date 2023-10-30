@@ -30,10 +30,17 @@ async function image2sixel(imageBuffer: Uint8Array): Uint8Array {
   return stringToU8a(sixel.image2sixel(s.data, s.width, s.height));
 }
 
-// let img = await fetch( "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/SubshellBanner.png",);
-// let imageBuffer = new Uint8Array(await img.arrayBuffer());
+let img = await fetch(
+  "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/SubshellBanner.png",
+);
+let imageBuffer = new Uint8Array(await img.arrayBuffer());
+Deno.stdout.writeSync(await image2sixel(imageBuffer));
 
-// Deno.stdout.writeSync(await image2sixel(imageBuffer));
+img = await fetch(
+  "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/GearShellBanner.png",
+);
+imageBuffer = new Uint8Array(await img.arrayBuffer());
+Deno.stdout.writeSync(await image2sixel(imageBuffer));
 
 // imageBuffer = Deno.readFileSync("./GearShell_vectorized.png");
 // Deno.stdout.writeSync(await image2sixel(imageBuffer));

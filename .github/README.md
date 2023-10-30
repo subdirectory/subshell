@@ -12,8 +12,9 @@
 [![License](https://img.shields.io/github/license/btwiuse/subshell?color=%23000&style=flat-round)](https://github.com/btwiuse/subshell/blob/main/LICENSE)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/btwiuse/subshell)
 
-Substrate API playground in a Deno 🦕 repl, using Polkadot.js extension wallet as
-remote signer ✍️. Say goodbye to hardcoded mnemonics / seeds in dev scripts 👋!
+Substrate API playground in a Deno 🦕 repl, using Polkadot.js extension wallet
+as remote signer ✍️. Say goodbye to hardcoded mnemonics / seeds in dev scripts
+👋!
 
 Subshell at its core is a TypeScript repl with these preloaded lines:
 
@@ -226,8 +227,8 @@ end at the same time.
 Since both ends speak JSON RPC, the browser 🌐 can invoke methods available on
 the Deno 🦕 side, and vice versa.
 
-You might ask, when could the browser 🌐 become a server? And how is this useful?
-That is covered in the next section.
+You might ask, when could the browser 🌐 become a server? And how is this
+useful? That is covered in the next section.
 
 ### Remote signer bridge
 
@@ -278,8 +279,8 @@ is now an interface, and the polkadot.js extension provides
 [an implementation](https://github.com/polkadot-js/extension/blob/b858f6eee12a42f570da2e0ee9b5e8f644a4494b/packages/extension-base/src/page/Signer.ts#L12-L45)
 to it.
 
-We can expose the implementation through the browser 🌐 side JSON RPC server, and
-use RemoteSignerBridge as the Signer implementation in Deno 🦕 repl context,
+We can expose the implementation through the browser 🌐 side JSON RPC server,
+and use RemoteSignerBridge as the Signer implementation in Deno 🦕 repl context,
 where signing requests will be forwarded to the wallet extension via JSON RPC
 calls.
 
@@ -307,7 +308,8 @@ Polkadot.js wallet extension in your browser🌐.
 
 ### Q: Does it use WASM?
 
-> No, it doesn't. The repl is running remotely in a linux container, not in our browser.
+> No, it doesn't. The repl is running remotely in a linux container, not in our
+> browser.
 
 ### Q: Can I use MetaMask on Moonbeam and other EVM compatible chains?
 
