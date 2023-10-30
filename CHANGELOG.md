@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.2.43-5 Oct 30, 2023
+## 0.2.43-6 Oct 30, 2023
 
 - bump deno to v1.37.2
 - disable --node-modules-dir
