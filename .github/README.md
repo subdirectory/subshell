@@ -1,6 +1,10 @@
-# Subshell [>_](https://subshell.xyz)
+# Subshell [❯_](https://subshell.xyz)
 
-[![Subshell_cover](Subshell_cover.png)](https://subshell.xyz)
+[![SubshellBanner](SubshellBanner.png)](https://subshell.xyz)
+
+<!--
+[![GearShellBanner](GearShellBanner.png)](https://gear.sh)
+-->
 
 [![SubshellModule](https://shield.deno.dev/x/subshell)](https://deno.land/x/subshell)
 [![Github Actions Build](https://github.com/btwiuse/subshell/actions/workflows/ci-release.yml/badge.svg)](https://github.com/btwiuse/subshell/actions/workflows/ci-release.yml)
