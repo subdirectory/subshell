@@ -48,7 +48,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GHCR }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - run: |
         docker tag subdirectory/subshell:${{ github.sha }} ghcr.io/${{ github.actor }}/subshell:${{ github.sha }}
