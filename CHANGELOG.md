@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.43-8 Nov 9, 2023
+
+- bump deno to v1.38.0
+
 ## 0.2.43-7 Oct 31, 2023
 
 - bump deno to v1.37.2
