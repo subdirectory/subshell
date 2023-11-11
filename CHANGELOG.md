@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.43-10 Nov 12, 2023
+
+- disable byonm
+
 ## 0.2.43-9 Nov 11, 2023
 
 - enable byonm
