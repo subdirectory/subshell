@@ -1,8 +1,5 @@
 {
   "nodeModulesDir": false,
-  "unstable": [
-    "byonm"
-  ],
   "tasks": {
     "dev": "deno run --watch main.ts"
   }
