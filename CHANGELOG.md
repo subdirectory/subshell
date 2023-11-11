@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.43-9 Nov 11, 2023
+
+- enable byonm
+- bump deno to v1.38.1
+
 ## 0.2.43-8 Nov 9, 2023
 
 - bump deno to v1.38.0
