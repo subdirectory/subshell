@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.43-11 Nov 16, 2023
+
+- add issues & wiki links for gear.sh
+
 ## 0.2.43-10 Nov 12, 2023
 
 - disable byonm
