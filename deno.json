@@ -1,5 +1,5 @@
 {
-  "nodeModulesDir": false,
+  "nodeModulesDir": "none",
   "tasks": {
     "dev": "deno run --watch main.ts"
   }

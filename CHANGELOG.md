@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.45 Nov 6, 2024
+
+- bump deno to v2
+- bump to deno.land/x/polkadot@0.2.45
+
 ## 0.2.43-11 Nov 16, 2023
 
 - add issues & wiki links for gear.sh
