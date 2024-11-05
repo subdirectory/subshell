@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.45-1 Nov 6, 2024
+
+- add --allow-import to repl
+
 ## 0.2.45 Nov 6, 2024
 
 - bump deno to v2

@@ -18,5 +18,5 @@ if [[ "$1" == cache ]]; then
 else
   # $DENO repl --v8-flags=--trace-side-effect-free-debug-evaluate --unstable --eval-file=https://deno.land/x/subshell@0.2.45/init.ts
   # $DENO repl --no-lock --allow-read=".github" --allow-net --allow-env --no-prompt --unstable --eval-file=./init.ts
-  $DENO repl --no-lock --allow-read=".github" --allow-net --allow-env --no-prompt --unstable --eval-file=https://deno.land/x/subshell@0.2.45/init.ts
+  $DENO repl --no-lock --allow-read=".github" --allow-net --allow-env --no-prompt --unstable --allow-import --eval-file=https://deno.land/x/subshell@0.2.45/init.ts
 fi
