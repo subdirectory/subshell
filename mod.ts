@@ -1,4 +1,4 @@
-// Copyright 2017-2023 subshell authors & contributors
+// Copyright 2017-2024 subshell authors & contributors
 // SPDX-License-Identifier: MIT
 
 // auto-generated via ci-release.ts, do not edit
