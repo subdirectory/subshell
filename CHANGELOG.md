@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.45-2 Dec 30, 2024
+
+- remove ghcr action
+- disable sixel banner due to deno incompatibility
+
 ## 0.2.45-1 Nov 6, 2024
 
 - add --allow-import to repl
