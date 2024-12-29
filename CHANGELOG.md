@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.45-3 Dec 30, 2024
+
+- fix release tag
+
 ## 0.2.45-2 Dec 30, 2024
 
 - remove ghcr action
