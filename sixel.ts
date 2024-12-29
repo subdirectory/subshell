@@ -7,7 +7,7 @@ import {
   ImageMagick,
   initializeImageMagick,
   MagickGeometry,
-} from "https://deno.land/x/imagemagick_deno@0.0.14/mod.ts";
+} from "https://deno.land/x/imagemagick_deno@0.0.31/mod.ts";
 
 await initializeImageMagick();
 

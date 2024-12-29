@@ -6,16 +6,7 @@ import {
 import { GearApi } from "https://gear-js.deno.dev/api/src/index.ts";
 import { Client } from "https://deno.land/x/subshell@0.2.45/client/mod.ts";
 // import { VerboseSigner } from "https://deno.land/x/subshell@0.2.45/signer/mod.ts";
-import { fromPng } from "npm:@rgba-image/png";
-import * as sixel from "npm:sixel";
 import { stringToU8a } from "https://deno.land/x/polkadot@0.2.45/util/mod.ts";
-import {
-  ImageMagick,
-  initializeImageMagick,
-  MagickGeometry,
-} from "https://deno.land/x/imagemagick_deno@0.0.14/mod.ts";
-
-await initializeImageMagick();
 
 const GEAR = !!Deno.env.get("GEAR");
 const DEFAULT_PROVIDER = GEAR
@@ -25,52 +16,6 @@ const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
 const PROVIDER = Deno.env.get("PROVIDER") ?? DEFAULT_PROVIDER;
 const TYPES = JSON.parse(Deno.env.get("TYPES") ?? "null");
 const HUB = Deno.env.get("HUB") ?? `ws://localhost:8000`;
-
-async function image2sixel(imageBuffer: Uint8Array): Uint8Array {
-  let resizedBuffer = await new Promise<Uint8Array>((resolve) => {
-    ImageMagick.read(imageBuffer, (image) => {
-      // console.log(image.width, image.height);
-      let scaleFactor = 160.0 / image.height;
-      const sizingData = new MagickGeometry(
-        image.width * scaleFactor,
-        image.height * scaleFactor,
-      );
-      image.resize(sizingData);
-      image.write((data) => resolve(data));
-    });
-  });
-
-  let s = await fromPng(resizedBuffer);
-
-  return stringToU8a(sixel.image2sixel(s.data, s.width, s.height));
-}
-
-export async function showBanner() {
-  const { columns } = Deno.consoleSize(0); // --unstable
-  if (columns <= 100) {
-    return;
-  }
-
-  let SubshellBannerURL =
-    "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/SubshellBanner.png";
-  let SubshellBannerImage = new Uint8Array(
-    await (await fetch(SubshellBannerURL)).arrayBuffer(),
-  );
-  let SubshellBannerSixel = await image2sixel(SubshellBannerImage);
-
-  let GearShellBannerURL =
-    "https://raw.githubusercontent.com/subdirectory/subshell/main/.github/GearShellBanner.png";
-  let GearShellBannerImage = new Uint8Array(
-    await (await fetch(GearShellBannerURL)).arrayBuffer(),
-  );
-  let GearShellBannerSixel = await image2sixel(GearShellBannerImage);
-
-  if (GEAR) {
-    await Deno.stdout.write(GearShellBannerSixel);
-  } else {
-    await Deno.stdout.write(SubshellBannerSixel);
-  }
-}
 
 function progInfo() {
   /* print program info from package.json */
@@ -97,8 +42,6 @@ function progInfo() {
 Deno.addSignalListener("SIGINT", () => {
   console.log("interrupted!");
 });
-
-await showBanner();
 
 progInfo();
 
