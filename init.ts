@@ -4,8 +4,8 @@ import {
   WsProvider,
 } from "https://deno.land/x/polkadot@0.2.45/api/mod.ts";
 import { GearApi } from "https://gear-js.deno.dev/api/src/index.ts";
-import { Client } from "https://deno.land/x/subshell@0.2.45/client/mod.ts";
-// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.45/signer/mod.ts";
+import { Client } from "https://deno.land/x/subshell@0.2.45-2/client/mod.ts";
+// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.45-2/signer/mod.ts";
 import { stringToU8a } from "https://deno.land/x/polkadot@0.2.45/util/mod.ts";
 
 const GEAR = !!Deno.env.get("GEAR");
