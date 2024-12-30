@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.45-4 Dec 30, 2024
+
+- switch to npm: specifier
+
 ## 0.2.45-3 Dec 30, 2024
 
 - fix release tag

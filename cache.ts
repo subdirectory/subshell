@@ -1,7 +1,4 @@
-import {
-  ApiPromise,
-  WsProvider,
-} from "https://deno.land/x/polkadot@0.2.45/api/mod.ts";
+import { ApiPromise, WsProvider } from "npm:@polkadot/api";
 
 import fs from "node:fs";
 

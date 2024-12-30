@@ -1,7 +1,4 @@
-import {
-  ApiPromise,
-  WsProvider,
-} from "https://deno.land/x/polkadot@0.2.45/api/mod.ts";
+import { ApiPromise, WsProvider } from "npm:@polkadot/api";
 
 async function initApi() {
   const PROVIDER = Deno.env.get("PROVIDER") ?? "wss://rpc.polkadot.io";

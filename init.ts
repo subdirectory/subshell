@@ -1,16 +1,13 @@
-import "https://deno.land/x/polkadot@0.2.45/api-augment/mod.ts";
-import {
-  ApiPromise,
-  WsProvider,
-} from "https://deno.land/x/polkadot@0.2.45/api/mod.ts";
-import { GearApi } from "https://gear-js.deno.dev/api/src/index.ts";
-import { Client } from "https://deno.land/x/subshell@0.2.45-3/client/mod.ts";
-// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.45-3/signer/mod.ts";
-import { stringToU8a } from "https://deno.land/x/polkadot@0.2.45/util/mod.ts";
+import "npm:@polkadot/api-augment";
+import { ApiPromise, WsProvider } from "npm:@polkadot/api";
+import { GearApi } from "npm:@gear-js/api";
+import { Client } from "https://deno.land/x/subshell@0.2.45-4/client/mod.ts";
+// import { VerboseSigner } from "https://deno.land/x/subshell@0.2.45-4/signer/mod.ts";
+import { stringToU8a } from "npm:@polkadot/util";
 
 const GEAR = !!Deno.env.get("GEAR");
 const DEFAULT_PROVIDER = GEAR
-  ? "wss://rpc.vara-network.io"
+  ? "wss://rpc.vara.network"
   : "wss://rpc.polkadot.io";
 const SESSION_ID = Deno.env.get("SESSION_ID") ?? "";
 const PROVIDER = Deno.env.get("PROVIDER") ?? DEFAULT_PROVIDER;
@@ -24,8 +21,12 @@ function progInfo() {
     // "⚙️ v8 version ": Deno.version.v8,
     // "🇹 TypeScript version ": Deno.version.typescript,
     "🦕 Deno": Deno.version.deno,
-    "📗 Wiki": GEAR ? "https://github.com/btwiuse/gear.sh/wiki" : "https://wiki.subshell.xyz",
-    "🙋 Issues": GEAR ? "https://github.com/btwiuse/gear.sh/issues" : "https://github.com/btwiuse/subshell/issues",
+    "📗 Wiki": GEAR
+      ? "https://github.com/btwiuse/gear.sh/wiki"
+      : "https://wiki.subshell.xyz",
+    "🙋 Issues": GEAR
+      ? "https://github.com/btwiuse/gear.sh/issues"
+      : "https://github.com/btwiuse/subshell/issues",
     // "⛓️ RPC Pprvider": PROVIDER,
     // "🪄 Custom types": JSON.stringify(TYPES) != '{}' ? 'Yes' : 'None',
     // "📖 Runtime api reference": 'https://substrate.rs',

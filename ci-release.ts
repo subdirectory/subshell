@@ -1,10 +1,11 @@
+#!/usr/bin/env -S deno run --allow-read --allow-run --allow-write --allow-env
 // Copyright 2017-2022 @polkadot/deno authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 // execute with
 //   deno run --allow-read --allow-run --allow-write --allow-env ci-release.ts
 
-import { stringCamelCase } from "https://deno.land/x/polkadot@0.2.45/util/mod.ts";
+import { stringCamelCase } from "npm:@polkadot/util";
 
 // tighter specification for git arguments
 type GitArgs =
@@ -113,7 +114,7 @@ async function gitSetup(): Promise<void> {
   await git("config", "user.email", MAIL);
   await git("config", "push.default", "simple");
   await git("config", "merge.ours.driver", "true");
-  await git("config", "--unset", "http.https://github.com/.extraheader");
+  // await git("config", "--unset", "http.https://github.com/.extraheader");
   await git("checkout", "main");
 }
 
@@ -176,4 +177,4 @@ await setPkgVersion(
   POLKADOT_VERSION,
   ".",
 );
-await gitPush(version);
+// await gitPush(version);

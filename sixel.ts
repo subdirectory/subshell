@@ -2,7 +2,7 @@
 
 import { fromPng } from "npm:@rgba-image/png";
 import * as sixel from "npm:sixel";
-import { stringToU8a } from "https://deno.land/x/polkadot@0.2.45/util/mod.ts";
+import { stringToU8a } from "npm:@polkadot/util";
 import {
   ImageMagick,
   initializeImageMagick,
